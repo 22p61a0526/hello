@@ -1,13 +1,4 @@
-pipeline
-agent any
-stages{
-stage('clone'){
-steps{
-git 'https://github.com/22p61a0526/hello.git'
-}
-stages('Build')
-{
-steps{pipeline {
+pipeline {
     agent any  // Defines the environment where the pipeline runs
 
     stages {
@@ -15,7 +6,7 @@ steps{pipeline {
 stage('clone') {  // Stage for building your project
             steps {
                 // echo 'Building the project...'
-                git 'https://github.com/gollapallydeepthi/devops__.git'
+                git ''
                 // Add build commands here (e.g., mvn, npm, etc.)
             }
         }
@@ -23,7 +14,7 @@ stage('clone') {  // Stage for building your project
 stage('Build') {  // Stage for building your project
             steps {
                 echo 'Building the project...'
-                sh 'javac Helloworld.java'
+                sh 'javac hello.java'
                 // Add build commands here (e.g., mvn, npm, etc.)
             }
         }
@@ -54,28 +45,3 @@ stage('Build') {  // Stage for building your project
     }
 }
 
-echo 'Building the project...'
-sh'javac hello.java'
-}
-}
-stage('Test')
-steps{
-echo 'Running tests...'
-sh 'javac hello world'
-}
-}
-stage('Depoly')
-{
-steps{
-echo 'Depolying the project...'
-}
-}
-}
-post
-{
-success{
-echo 'pipeline completed successfully!'
-}
-failure{
-echo 'pipeline failed'
-}
