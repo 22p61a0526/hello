@@ -1,0 +1,35 @@
+pipeline
+agent any
+stages{
+stage('clone'){
+steps{
+git 'https://github.com/22p61a0526/hello.git'
+}
+stages('Build')
+{
+steps{
+echo 'Building the project...'
+sh'javac hello.java'
+}
+}
+stage('Test')
+steps{
+echo 'Running tests...'
+sh 'javac hello world'
+}
+}
+stage('Depoly')
+{
+steps{
+echo 'Depolying the project...'
+}
+}
+}
+post
+{
+success{
+echo 'pipeline completed successfully!'
+}
+failure{
+echo 'pipeline failed'
+}
